@@ -5,26 +5,30 @@
  */
 public class LargestPalindromeProduct {
     // A method that checks if the result is a Palindrome
-    private static boolean isPalindrome(String number, int start, int end){
-        if(start >= end)
-            return true;
-        if(number.charAt(start) != number.charAt(end))
-            return false;
-        return isPalindrome(number, start+1, end-1);
+    private static boolean isPalindrome(int number){
+        int temp = number;
+        int reverse = 0;
+        while(temp > 0){
+            reverse = 10*reverse + temp % 10;
+            temp /= 10;
+        }
+        return (reverse == number);
     }
     
     // This is a method that goes through all possibilities to get the largest Palindrome
     public static int largest(){
         int largest = 0;
-        for(int i = 999; i >= 100; i--){
-            for(int j = 999; j >= 100; j--)
-            {
-                if(largest < i*j){
-                    String temp = "" + i*j;
-                    if(isPalindrome(temp, 0, temp.length()-1))
-                        largest = i*j;
-                }
+        int i = 999, j = 0;
+        while(i >=100){
+            j = 999;
+            while(j>=i){
+                if(i*j < largest)
+                    break;
+                if(isPalindrome(i*j))
+                    largest = i*j;
+                j--;
             }
+            i--;
         }
         return largest;
     }
@@ -33,3 +37,4 @@ public class LargestPalindromeProduct {
         System.out.println(largest());
     }
 }
+
