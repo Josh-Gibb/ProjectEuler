@@ -27,23 +27,13 @@ public class LargestPrimeFactor {
         if(number%2==0){
             return 2;
         }
-        for(long i = 3; i < number; i += 2){
-            if(isPrime(i)){
-                if(number%i == 0)
-                    return i;
-            }
+        for(long i = 3; i < Math.round(Math.sqrt(number)); i += 2){
+            if(number%i == 0)
+                return i;
         }
         return number;
     }
-    // A method to check that a number is a prime
-    private static boolean isPrime(long factor){
-        for(long i = 3L; i < factor; i+=2){
-            if(factor%i==0){
-                return false;
-            }
-        }
-        return true;
-    }
+
     
     // Main Method
     public static void main(String[] args){
