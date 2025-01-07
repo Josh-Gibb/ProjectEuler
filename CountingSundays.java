@@ -3,6 +3,7 @@
  * CountingSundays.java
  */
 public class CountingSundays {
+    // A method to return the number of days for each month
     private static int getDaysOfMonth(int month, int year){
         switch(month){
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
@@ -20,6 +21,9 @@ public class CountingSundays {
         }
         return 0;
     }
+
+    // A method to find the Sundays that fall on the 1st of the month
+    // Days start at 1, to represent 1 Jan 1900 is a Monday
     public static int countSundays(){
         int sundays = 0;
         int days = 1;
